@@ -1,6 +1,6 @@
 #### Complete App
 
-[Jobify](https://jobify.live/)
+[Jobify](https://jobify-mern-app-1.onrender.com)
 
 #### Create React APP
 
