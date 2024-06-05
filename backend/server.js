@@ -58,7 +58,7 @@ app.use('/api/v1/users', authenticateUser, userRouter);
 app.use('/api/v1/auth', authRouter);
 
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, './client/dist', 'index.html'));
+  res.sendFile(path.resolve(__dirname, './client', 'index.html'));
 });
 
 app.use('*', (req, res) => {
@@ -67,7 +67,10 @@ app.use('*', (req, res) => {
 
 app.use(errorHandlerMiddleware);
 
-const port = process.env.PORT || 5000;
+const port =
+  process.env.PORT ||
+  5000 ||
+  'https://jobify-mern-app-backend-o7tc6vcjh-fardins-projects-0e134bfe.vercel.app/';
 
 try {
   await mongoose.connect(process.env.MONGO_URL);
