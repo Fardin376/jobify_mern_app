@@ -39,6 +39,13 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.static(path.resolve(__dirname, './client/dist')));
 
 app.use(cookieParser());
+app.use(
+  cors({
+    origin: ['https://jobify-mern-app-6ufc.vercel.app/'],
+    methods: ['POST', 'GET'],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(helmet());
 app.use(mongoSanitize());
