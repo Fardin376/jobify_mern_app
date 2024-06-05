@@ -2,7 +2,7 @@
   "name": "my-mern-app",
   "version": "1.0.0",
   "description": "[Jobify]",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
     "setup-project": "cd server && npm i && cd client && npm i",

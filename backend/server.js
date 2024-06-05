@@ -37,8 +37,6 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-app.use(express.static(path.resolve(__dirname, './client/dist')));
-
 app.use(cookieParser());
 app.use(
   cors({
@@ -57,9 +55,14 @@ app.use('/api/v1/users', authenticateUser, userRouter);
 
 app.use('/api/v1/auth', authRouter);
 
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, './client', 'index.html'));
-});
+if (process.env.NODE_ENV == 'production') {
+  const path = require('path');
+
+  app.get('/', (req, res) => {
+    app.use(express.static(path.resolve(__dirname, './client/dist')));
+    res.sendFile(path.resolve(__dirname, './client/dist', 'index.html'));
+  });
+}
 
 app.use('*', (req, res) => {
   res.status(404).json({ message: 'not found' });
@@ -68,9 +71,7 @@ app.use('*', (req, res) => {
 app.use(errorHandlerMiddleware);
 
 const port =
-  process.env.PORT ||
-  5000 ||
-  'https://jobify-mern-app-backend-o7tc6vcjh-fardins-projects-0e134bfe.vercel.app/';
+  process.env.PORT || 5000 || 'https://jobify-mern-app-backend.vercel.app/';
 
 try {
   await mongoose.connect(process.env.MONGO_URL);
