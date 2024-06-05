@@ -3,8 +3,8 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
 
-import Job from './models/JobModel.js';
-import User from './models/UserModel.js';
+import Job from './backend/models/JobModel.js';
+import User from './backend/models/UserModel.js';
 
 try {
   await mongoose.connect(process.env.MONGO_URL);

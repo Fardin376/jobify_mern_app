@@ -4,7 +4,7 @@ import {
   NotFoundError,
   UnauthorizedError,
 } from '../errors/CustomError.js';
-import { JOB_STATUS, JOB_TYPE } from '../utils/constants.js';
+import { JOB_STATUS, JOB_TYPE } from '../../utils/constants.js';
 import Job from '../models/JobModel.js';
 import User from '../models/UserModel.js';
 import mongoose from 'mongoose';
