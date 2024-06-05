@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://jobify-mern-app-backend.vercel.app/api',
+        target: 'http://localhost:5000/api',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },

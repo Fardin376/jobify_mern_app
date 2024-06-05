@@ -42,7 +42,7 @@ app.use(express.static(path.resolve(__dirname, './client/dist')));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: 'https://jobify-mern-app-backend.vercel.app/',
+    origin: '',
     methods: ['POST', 'GET'],
     credentials: true,
   })
