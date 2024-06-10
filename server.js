@@ -40,7 +40,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use(cookieParser());
 app.use(
   cors({
-    origin: '',
+    origin: process.env.CLIENT_URL,
     methods: ['POST', 'GET'],
     credentials: true,
   })
@@ -64,7 +64,7 @@ if (process.env.NODE_ENV == 'production') {
   });
 }
 
-app.use('*', (req, res) => {
+app.use('/', (req, res) => {
   res.status(404).json({ message: 'not found' });
 });
 
